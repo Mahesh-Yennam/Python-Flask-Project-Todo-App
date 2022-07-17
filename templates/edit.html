@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}
+Edit
+{% endblock title %}
+
+{% block body %}
+<div>
+    <form action="/edittodo/{{todo.0}}" method="post">
+            <h2>Edit Todo</h2>
+            <table border="0" cellspacing="0" cellpadding="10" style="text-align: center;">
+                <tr>
+                    <td>Title</td>
+                    <td>Body</td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="title" value="{{todo.1}}"></td>
+                    <td><input type="text" name="body" value="{{todo.2}}"></td>
+                    <!-- <td><textarea name="body" cols="30" rows="10"></textarea></td> -->
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" value="Submit"></td>
+                </tr>
+            </table>
+    </form>
+</div>
+{% endblock body %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}
+Home
+{% endblock title %}
+
+{% block body %}
+<h2>Todo Application</h2>
+<div>
+    <form action="/addtodo" method="post">
+            <h2>Add Todo</h2>
+            <table border="0" cellspacing="0" cellpadding="10" style="text-align: center;">
+                <tr>
+                    <td>Title</td>
+                    <td>Body</td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="title" required></td>
+                    <td><input type="text" name="body" required></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" value="Submit"></td>
+                </tr>
+            </table>
+    </form>
+</div>
+<div>
+    <form>
+            <h2>Todo List</h2>
+            <table border="0" cellspacing="0" cellpadding="15" style="text-align: center;">
+                <tr>
+                    <td>Sr.No.</td>
+                    <td>Title</td>
+                    <td>Body</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                {% if todos %}
+                {% for todo in todos %}
+                <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{todo.1}}</td>
+                    <td>{{todo.2}}</td>
+                    <td><a href="/edit/{{todo.0}}"><input type="button" value="Edit"></a></td>
+                    <td><a href="/delete/{{todo.0}}"><input type="button" value="Delete"></a></td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </table>
+    </form>
+</div>
+{% endblock body %}
